@@ -7,7 +7,7 @@ class ClickableLabel : public QLabel
 {
     Q_OBJECT
 public:
-    ClickableLabel(QWidget* parent = 0) : QLabel(parent) {}
+    explicit ClickableLabel(QWidget* parent = 0) : QLabel(parent) { }
     ClickableLabel(const QString& text = "", QWidget* parent = 0) : QLabel(parent) {
         setText(text);
     }
