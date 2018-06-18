@@ -23,6 +23,7 @@
 #include <QVector3D>
 #include <QMatrix4x4>
 #include <QColor>
+#include <cmath>
 
 SsaoGenerator::SsaoGenerator() {
 }
@@ -66,7 +67,7 @@ QImage SsaoGenerator::calculateSsaomap(QImage normalmap, QImage depthmap, float 
                 float sampleDepth = QColor(depthmap.pixel(x, y)).redF();
 
                 //range check and accumulate
-                float rangeCheck = fabs(origin.z() - sampleDepth) < radius ? 1.0 : 0.0;
+                float rangeCheck = std::fabs(origin.z() - sampleDepth) < radius ? 1.0 : 0.0;
                 occlusion += (sampleDepth <= sample.z() ? 1.0 : 0.0) * rangeCheck;
             }
 
